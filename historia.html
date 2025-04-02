@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>História da J</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .hero-section {
+        position: relative;
+        background: url('jsdbanner.jpg') no-repeat center center/cover;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s;
+      }
+      .hero-section:hover {
+        filter: brightness(50%);
+      }
+      .hero-title {
+        font-size: 4rem;
+        font-weight: bold;
+        text-align: center;
+        color: orange;
+        position: relative;
+        z-index: 2;
+        transition: 0.5s;
+      }
+      .hero-section:hover .hero-title {
+        filter: brightness(150%);
+      }
+      .featurette {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 15px;
+      }
+      .featurette img {
+        max-width: 40%;
+        height: auto;
+        border-radius: 10px;
+      }
+      .featurette-text {
+        max-width: 50%;
+        padding: 20px;
+        font-size: 1.5rem;
+      }
+      @media (max-width: 768px) {
+        .featurette {
+          flex-direction: column;
+          text-align: center;
+        }
+        .featurette img, .featurette-text {
+          max-width: 100%;
+        }
+      }
+      .jsd-section {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 15px;
+      }
+      .jsd-section img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+      }
+      .jsd-text-container {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%) scale(1);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        width: 30%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .jsd-text-container:hover {
+        transform: translateY(-50%) scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+      .jsd-text-container h2, .jsd-text-container p {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .jsd-text-container.visible h2, .jsd-text-container.visible p {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .custom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.custom-box {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.custom-box img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.custom-box:hover img {
+    transform: scale(1.05);
+}
+
+.custom-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Retângulo de explicação */
+.custom-info-box {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Fundo escuro ao abrir info */
+.custom-info-box.active {
+    display: block;
+}
+
+.custom-info-box h3 {
+    margin-bottom: 10px;
+}
+
+.custom-info-box p {
+    font-size: 1.1em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .custom-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-box {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.custom-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.custom-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* Estilo do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caixa dentro do modal */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Botão de fechar */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    grid-template-rows: repeat(2, 1fr); /* 2 linhas */
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.custom-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Mantém a proporção */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.custom-box:hover {
+    transform: scale(1.05);
+}
+
+.custom-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.custom-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 102, 0, 0.733);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 1 coluna no telemóvel */
+    }
+}
+
+.bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      .featurette-heading, .lead {
+    padding-left: 20px; /* Adiciona um espaço à esquerda */
+    padding-right: 15px; /* Adiciona um espaço à direita */
+}
+
+.featurette-heading {
+    font-size: 1.8rem; /* Ajusta o tamanho do texto da citação */
+    font-weight: bold;
+    color: #333; /* Cor escura para melhor legibilidade */
+    margin-bottom: 10px;
+}
+
+.lead.fw-bold {
+    font-size: 1.2rem; /* Tamanho do nome do político */
+    color: #007bff; /* Azul para destacar o nome */
+    margin-bottom: 5px;
+}
+
+.featurette-divider {
+    margin: 40px 0; /* Espaçamento entre as seções */
+    border-top: 2px solid #ddd; /* Linha separadora mais visível */
+}
+
+.featurette img {
+    border-radius: 10px; /* Borda arredondada para as imagens */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Pequena sombra para efeito de profundidade */
+}
+
+@media (max-width: 768px) {
+    .featurette-heading {
+        font-size: 1.5rem;
+    }
+
+    .lead.fw-bold {
+        font-size: 1rem;
+    }
+
+    .featurette img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.featurette {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between;
+    flex-wrap: wrap; /* Garante que não haja quebras estranhas */
+    margin-bottom: 40px; /* Espaçamento entre seções */
+}
+
+.featurette-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+.featurette-divider {
+    margin: 40px 0;
+    border-top: 2px solid #ddd;
+}
+
+.featurette img {
+    max-width: 90%; /* Mantém o tamanho uniforme sem ultrapassar a largura */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    object-fit: cover; /* Mantém proporções das imagens */
+}
+
+.col-md-5, .col-md-7 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .featurette {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .featurette img {
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+.featurette {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.featurette-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.politician-name {
+    font-size: 1.5rem; /* Aumenta o tamanho do nome */
+    font-weight: bold;
+    color: orange; /* Azul mais escuro para destaque */
+    text-transform: uppercase; /* Coloca em maiúsculas */
+    margin-bottom: 5px;
+    display: block; /* Garante que fica acima da citação */
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.featurette-divider {
+    margin: 40px 0;
+    border-top: 2px solid #ddd;
+}
+
+.featurette img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+.col-md-5, .col-md-7 {
+    display: flex;
+    flex-direction: column; /* Empilha o texto corretamente */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .featurette {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .featurette img {
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+.featurette-image, .img-fluid {
+  transition: transform 0.3s ease-in-out;
+}
+
+.featurette-image:hover, .img-fluid:hover {
+  transform: scale(1.1);
+}
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="hero-section">
+        <h1 class="hero-title">História da "J"</h1>
+      </div>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">JSD</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="historia.html">História</a>
+              </li>
+              <li class="nav-item ms-auto">
+                <a class="nav-link active" href="login.php">Aderir</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    <main>
+      <section class="featurette">
+        <img src="jsddescricao.jpg" alt="Imagem representativa">
+        <div class="featurette-text">
+          <p>A história da Juventude Social Democrata é marcada por dedicação, empenho e a luta por um futuro melhor. Desde a sua fundação, a JSD tem desempenhado um papel crucial na política jovem, inspirando novas gerações.</p>
+        </div>
+      </section>
+    </main>
+    
+    <section class="jsd-section">
+      <img src="jss.jpg" alt="Juventude Social Democrata">
+      <div class="jsd-text-container" id="jsdText">
+        <h2 class="text-3xl font-bold text-blue-800 mb-4">Fundação e Origens</h2>
+        <p class="text-gray-700 leading-relaxed">A Juventude Social Democrata (JSD) foi fundada em 1974 como a estrutura juvenil do Partido Social Democrata (PSD). <br><br>Surgiu num contexto de transformação política, com o objetivo de dar voz às preocupações e aspirações da juventude portuguesa. Desde o início, a JSD destacou-se pelo seu compromisso com a liberdade, democracia e progresso social.</p>
+      </div>
+    </section>
+
+    <div class="grid-container">
+      <div class="custom-box" onclick="showInfo('Objetivos e Missão', 'A Juventude Social Democrata (JSD) tem como principal missão representar e defender os interesses dos jovens portugueses. Através da promoção de políticas inovadoras, procura garantir melhores oportunidades no acesso à educação, emprego e participação cívica. Com um forte compromisso com os valores sociais-democratas, a JSD constitui-se como um espaço de debate e formação política, incentivando a construção de uma geração preparada e comprometida com o futuro do país.')">
+          <img src="jsdret1.jpg" alt="Objetivos">
+          <div class="custom-overlay">Objetivos e Missão</div>
+      </div>
+  
+      <div class="custom-box" onclick="showInfo('Primeiras Atividades e Crescimento', 'Desde os primeiros anos, a JSD destacou-se pela organização de congressos, debates e campanhas, aproximando os jovens da vida política. O crescimento foi rápido, com a criação de núcleos locais e distritais que fortaleceram a sua presença em todo o território nacional. Através de ações de formação, projetos sociais e ativismo, consolidou-se como uma das mais influentes juventudes partidárias em Portugal, moldando o pensamento político das novas gerações.')">
+          <img src="jsdret2.jpg" alt="Conquistas">
+          <div class="custom-overlay">Primeiras Atividades e Crescimento</div>
+      </div>
+  
+      <div class="custom-box" onclick="showInfo('Momentos-Chave e Conquistas', 'Ao longo da sua trajetória, a JSD esteve na linha da frente de causas essenciais para a juventude, desde a modernização do ensino até ao reforço das políticas de emprego jovem. A sua atuação dentro do PSD foi determinante para a inclusão de propostas que impactaram positivamente a sociedade, garantindo maior representatividade e inovação nas políticas públicas. A JSD continua a ser uma força transformadora, impulsionando mudanças e preparando os líderes do futuro.')">
+          <img src="jsdret3.jpeg" alt="Momentos-Chave">
+          <div class="custom-overlay">Momentos-Chave e Conquistas</div>
+      </div>
+  
+      <div class="custom-box" onclick="showInfo('Desafios e Mudanças', 'Com a evolução da juventude portuguesa, a JSD teve de se reinventar para acompanhar os novos tempos. Desde crises económicas que afetaram o emprego jovem até à revolução digital e o impacto das redes sociais na comunicação política, a organização tem apostado na inovação e modernização da sua abordagem. Adaptando-se às necessidades de cada geração, a JSD mantém-se uma referência para os jovens que querem participar ativamente na construção do futuro de Portugal.')">
+          <img src="jsdret4.jpg" alt="Desafios">
+          <div class="custom-overlay">Desafios e Mudanças</div>
+      </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Figuras Marcantes da JSD</h1>
+    
+    <div class="row featurette">
+      <div class="col-md-7">
+        <p class="politician-name">Pedro Passos Coelho</p>
+        <h2 class="featurette-heading ">Foi presidente da JSD (1990-1995), promovendo uma linha mais liberal e reformista. Apostou na formação política e no reforço da autonomia da JSD dentro do PSD, aproximando a organização de juventudes partidárias europeias. Muitos dos quadros formados sob a sua liderança viriam a ter papéis de destaque no partido.</h2>
+      </div>
+      <div class="col-md-5">
+        <img src="passoscoelhofrase.jpg" class="featurette-image img-fluid mx-auto" width="350" height="350" alt="Pedro Passos Coelho">
+      </div>
+    </div>
+    
+    <hr class="featurette-divider">
+    
+    <div class="row featurette">
+      <div class="col-md-5 order-md-1 d-flex justify-content-center">
+        <img src="miguelrelvas.jpg" class="img-fluid rounded" style="max-width: 70%; margin-left: 20px;" alt="Imagem">
+      </div>
+      <div class="col-md-7 order-md-2">
+        <p class="politician-name">Miguel Relvas</p>
+        <h2 class="featurette-heading ">Teve um papel estratégico na JSD nos anos 80, contribuindo para a modernização e estruturação organizativa da juventude social-democrata. Ajudou a reforçar a presença da JSD no debate político e a preparar novos quadros para o partido, tornando-se depois um influente dirigente do PSD.</h2>
+      </div>
+    </div>
+    
+    <hr class="featurette-divider">
+    
+    <div class="row featurette">
+      <div class="col-md-7">
+        <p class="politician-name">Luís Montenegro</p>
+        <h2 class="featurette-heading ">Destacou-se na JSD como presidente da Distrital de Aveiro, sendo reconhecido pela sua capacidade de argumentação e mobilização. Defendeu o envolvimento dos jovens na política, focando-se na educação e no emprego jovem. A sua passagem pela JSD foi essencial para a sua futura ascensão no PSD.</h2>
+      </div>
+      <div class="col-md-5">
+        <img src="luismontenegro.jpg" class="featurette-image img-fluid mx-auto" width="350" height="350" alt="Pedro Passos Coelho">
+      </div>
+    </div>
+    
+
+    <hr class="featurette-divider">
+    
+    <div class="row featurette">
+      <div class="col-md-5 order-md-1 d-flex justify-content-center">
+        <img src="luismarquesmendes.jpg" class="img-fluid rounded" style="max-width: 70%; margin-left: 20px;" alt="Imagem">
+      </div>
+      <div class="col-md-7 order-md-2">
+        <p class="politician-name">Luís Marques Mendes</p>
+        <h2 class="featurette-heading ">Foi presidente da JSD (1982-1984), fortalecendo a organização e promovendo o debate sobre educação, emprego jovem e participação cívica. A sua liderança ajudou a consolidar a JSD dentro do PSD. Mais tarde, foi deputado, ministro e líder do PSD (2005-2007), tornando-se uma voz influente na política nacional.</h2>
+      </div>
+    </div>
+    
+  
+  
+  
+  <!-- Modal de Informação -->
+<div id="infoModal" class="modal">
+  <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+  </div>
+</div>
+
+  
+  
+  <!-- Retângulo de informação -->
+  <div id="infoBox" class="custom-info-box" onclick="hideInfo()"></div>
+  
+    
+    <footer class="text-center py-3 bg-light">
+      <p>&copy; 2025 Juventude Social Democrata</p>
+    </footer>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const textContainer = document.getElementById("jsdText");
+    function checkVisibility() {
+        if (textContainer) {
+            const rect = textContainer.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.85) {
+                textContainer.classList.add("visible");
+            }
+        }
+    }
+    document.addEventListener("scroll", checkVisibility);
+    checkVisibility();
+
+    let infoBox = document.getElementById("infoBox");
+    if (infoBox) {
+        infoBox.style.display = "none"; // Garante que o infoBox esteja oculto inicialmente
+    }
+});
+
+function showInfo(topic, element) {
+    let infoBox = document.getElementById("infoBox");
+    if (!infoBox) return;
+
+    let content = {
+        "psdtv": "<h3>PSDtV</h3><p>Assista a conteúdos exclusivos e informativos.</p>",
+        "noticias": "<h3>Notícias</h3><p>Fique atualizado com as últimas notícias.</p>",
+        "povo": "<h3>Povo Livre</h3><p>Leia a última edição do jornal.</p>"
+    };
+
+    if (content[topic]) {
+        infoBox.innerHTML = content[topic];
+        infoBox.classList.add("active");
+        infoBox.style.display = "block"; // Garante que o infoBox seja exibido corretamente
+    }
+
+    let rect = element.getBoundingClientRect();
+    infoBox.style.top = `${rect.top + window.scrollY + 20}px`;
+    infoBox.style.left = `${rect.left + window.scrollX}px`;
+}
+
+function hideInfo() {
+    let infoBox = document.getElementById("infoBox");
+    if (infoBox) {
+        infoBox.classList.remove("active");
+        infoBox.style.display = "none"; // Oculta o infoBox corretamente
+    }
+}
+
+function showInfo(title, content) {
+    let modalTitle = document.getElementById("modalTitle");
+    let modalText = document.getElementById("modalText");
+    let infoModal = document.getElementById("infoModal");
+
+    if (modalTitle && modalText && infoModal) {
+        modalTitle.innerText = title;
+        modalText.innerText = content;
+        infoModal.style.display = "flex";
+    }
+}
+
+function closeModal() {
+    let infoModal = document.getElementById("infoModal");
+    if (infoModal) {
+        infoModal.style.display = "none";
+    }
+}
+
+
+    </script>
+  </body>
+</html>

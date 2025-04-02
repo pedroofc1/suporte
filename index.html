@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <!-- Meta tags esenciales -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>Carousel Template · Bootstrap v5.3</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Estilos adicionales -->
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      .featurette-heading, .lead {
+    padding-left: 20px; /* Adiciona um espaço à esquerda */
+    padding-right: 15px; /* Adiciona um espaço à direita */
+}
+
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .video-section {
+  background: linear-gradient(135deg, #ff8800, #ff5500);
+  padding: 60px;
+  border-radius: 25px;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-section:hover {
+  transform: scale(1.05);
+}
+
+.zero {
+  color: #ffe600;
+}
+
+.video-container {
+  margin: 20px auto;
+  max-width: 120%;
+}
+
+video {
+  width: 100%;
+  border-radius: 10px;
+}
+.text-center {
+  text-align: center;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.highlight {
+  color: #ff8800;
+}
+
+.bd-placeholder-img {
+  display: block;
+  margin: 0 auto;
+}
+
+.orange-text {
+    color: orange;
+}
+
+.carousel-caption h1, .carousel-caption p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra preta */
+}
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+    
+<header data-bs-theme="dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid" >
+      <a class="navbar-brand" href="#">JSD</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="historia.html">História</a>
+          </li>
+          <li class="nav-item ms-auto">
+            <a class="nav-link active" href="login.php">Aderir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <img src="https://images.impresa.pt/sicnot/2024-06-23-joao-pedro-louro-b06af383/original" class="d-block w-100" alt="Imagem 1">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Fazer um Futuro Melhor!</h1>
+            <p class="opacity-75">Mais que um grupo, é uma Família</p>
+            <p><a class="btn btn-lg btn-primary" href="login.php">Adere já</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <img src="sacarneiro.jpg" class="d-block w-100" alt="Imagem 2">
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1 class="orange-text">História da "J"</h1>
+            <p class="orange-text">Descobre mais sobre a Juventude que fazo melhor pelo país!</p>
+            <p><a class="btn btn-lg btn-primary" href="historia.html">Descobre mais</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <img src="jsdslide3.jpeg" class="d-block w-100" alt="Imagem 3">
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>Mais que um Partido, é uma Família!</h1>
+            <p>Junta-te já ao PSD (Maiores de 18 anos)</p>
+            <p><a class="btn btn-lg btn-primary" href="https://www.psd.pt/pt/aderir">Aderir</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="row justify-content-center text-center my-5">
+    <div class="col-lg-8 video-section">
+      <h2 class="fw-bold">O que significa ser <span class="zero">Social Democrata?</span></h2>
+      <p class="lead">A Social-Democracia defende um equilíbrio entre liberdade econômica e justiça social. <br><br>Descubra mais no vídeo abaixo!</p>
+      
+      <div class="video-container">
+        <video controls>
+          <source src="sersocialdemocrata.mp4" type="video/mp4">
+          Seu navegador não suporta a reprodução de vídeos.
+        </video>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row justify-content-center text-center my-5">
+      <div class="col-lg-8">
+        <h2 class="fw-bold">Figuras <span class="highlight">Importantes</span></h2>
+      </div>
+    </div>
+    
+    <div class="row text-center">
+      <div class="col-lg-4">
+        <img src="pedroperfil.jpg" class="bd-placeholder-img rounded-circle" width="170" height="160" alt="Pedro Passos Coelho">
+        <h2 class="fw-normal">Pedro Passos Coelho</h2>
+        <p>Pedro Passos Coelho é um economista e político português que foi Primeiro-Ministro de 2011 a 2015. Liderou o país durante a crise financeira, implementando políticas de austeridade e reformas estruturais para recuperar a economia. Como líder do PSD, destacou-se pelo pragmatismo e foco em sustentabilidade financeira e empreendedorismo.</p>
+      </div>
+    
+      <div class="col-lg-4">
+        <img src="saperfil.jpg" class="bd-placeholder-img rounded-circle" width="160" height="160" alt="Francisco Sá Carneiro">
+        <h2 class="fw-normal">Francisco Sá Carneiro</h2>
+        <p>Francisco Sá Carneiro foi um político português, fundador do Partido Social Democrata (PSD) e Primeiro-Ministro de Portugal até sua morte em 1980. Ele é lembrado por seu papel na modernização do país e pela luta pela liberdade durante o regime do Estado Novo.</p>
+      </div>
+    
+      <div class="col-lg-4">
+        <img src="jplperfil.png" class="bd-placeholder-img rounded-circle" width="210" height="140" alt="João Pedro Louro">
+        <h2 class="fw-normal">João Pedro Louro</h2>
+        <p>João Pedro Louro é um político e membro ativo do Partido Socialista, conhecido pelo seu engajamento com questões sociais e políticas, com foco em políticas de juventude e igualdade.</p>
+      </div>
+    </div>
+    
+        
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading fw-normal lh-1">"Temos que ter a capacidade de olhar para aqueles que estão à nossa volta e de ver além dos nossos interesses mais imediatos."</h2>
+    <p class="lead">-Pedro Passos Coelho</p>
+  </div>
+  <div class="col-md-5">
+    <!-- Imagem do político -->
+    <img src="passoscoelhofrase.jpg" class="featurette-image img-fluid mx-auto" width="450" height="450" alt="Pedro Passos Coelho">
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-5 order-md-1 d-flex justify-content-center">
+    <img src="original.webp" class="img-fluid rounded" style="max-width: 70%; margin-left: 20px;" alt="Imagem">
+  </div>
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading fw-normal lh-1">"Ser homem é ser livre, a liberdade de pensar é a liberdade de ser."</h2>
+    <p class="lead">-Francisco Sá Carneiro</p>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading fw-normal lh-1">"O Partido Socialista não está contra o Orçamento do Estado. Está contra a juventude portuguesa. Não esqueceremos."</h2>
+    <p class="lead">-João Pedro Louro</p>
+  </div>
+  <div class="col-md-5">
+    <!-- Imagem do político -->
+    <img src="jplrase.webp" class="featurette-image img-fluid mx-auto" width="500" height="500" alt="João Pedro Louro">
+  </div>
+</div>
+
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">Voltar para Cima</a></p>
+    <p>&copy; 2025-Juventude Social Democrata &middot; </p>
+  </footer>
+</main>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    </body>
+</html>
