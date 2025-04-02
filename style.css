@@ -1,0 +1,192 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: rgb(var(--bs-tertiary-color-rgb));
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+.btn{
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: orange;
+}
+
+.btn:hover{
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rbga(0, 0, 0, .6);
+  background-color: orange;
+}
+
+
+
+/* Thin out the marketing headings */
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;  /* Alinha os itens à direita */
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Corpo */
+body {
+  background-color: #f4f4f4;
+}
+
+/* Seção Expor Ideia */
+.expor-ideia-section {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 600px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Botão */
+.expor-ideia-btn {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.expor-ideia-btn:hover {
+  background: #cc5500;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Formulário */
+form input, form textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+button {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #cc5500;
+}
